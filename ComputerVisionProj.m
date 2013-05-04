@@ -84,7 +84,11 @@ function openFile_ClickedCallback(hObject, eventdata, handles)
 {'*.jpg*',  'Jpeg File (*.jpg*)'}, ...
    'Pick a file');
 
-%load the image to workspace variable
-assignin('base', 'importedImg', imread(strcat(pathname,filename),'jpg'));
+%if the user chose a file to work with 
+if (filename ~= 0)
+    %load the image to workspace variable
+    assignin('base', 'importedImg', imread(strcat(pathname,filename),'jpg'));
+end
+
 
 
