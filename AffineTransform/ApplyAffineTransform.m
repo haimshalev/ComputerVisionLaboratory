@@ -12,7 +12,7 @@ disp('...');
 pause;
 
 %Display the Affined Model landmarks
-showboxes(srcImage,AffinedModel),title('The Image after affined Transformation with the model Landmark');
+showboxes(srcImage,AffinedModel),title('The Image before affine Transformation with the model Landmark');
 
 %Create the affine transformation matrix
 transformationMatrix = CreateAffineTransformationMatrix(srcImage , AffinedModel );
