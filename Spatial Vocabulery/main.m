@@ -4,7 +4,7 @@ histogramsPath = 'TrainDB/histograms.mat';
 dbPath = 'TrainDB/globalDB.mat';
 
 % train
-%Method1Train(dbPath,histogramsPath);
+Method1Train(dbPath,histogramsPath);
 
 % Generate a vector  
 
