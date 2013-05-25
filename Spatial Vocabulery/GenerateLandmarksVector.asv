@@ -1,0 +1,14 @@
+function [ faceSpatialRepresentor ] = GenerateLandmarksVector( landmarks, origin, z, landmarksHistograms )
+% landmarks is k x 2
+% landmarksHistograms is k x Q x 2
+
+[k,Q,~] = size(landmarksHistograms);
+faceSpatialRepresentor = zeros(k*Q,1);
+for i=1:k
+    landmark = landmarks(
+     landmarkRepresentor = GenerateOneLandmarkVector( landmark, origin, z, landmarkHistogram );
+     faceSpatialRepresentor(Q*(k-1) + 1:Q*k) = landmarkRepresentor;
+end
+
+end
+

@@ -1,0 +1,21 @@
+function [ histogram ] = CalculateHistogram( singleTypeLandmarks, origin, Q )
+% singleTypeLandmarks is a n x 2 (n - number of images)
+
+% OUTPUT : 
+%           histogram is a Q x 1 (
+
+[n,~] = size(singleTypeLandmarks);
+
+% calculate for each landmark its distance from the origin
+distances = zeros(1,n);
+for i=1:n
+    distances(i) = CalculateDistance(singleTypeLandmarks(i,:),origin);
+end
+
+[binsFrequencies,binsLocations] = hist(distances,Q);
+histogram = zeros(Q,n);
+histogram(1:Q) = binsLocations;
+histogram(1:Q) = binsLocations;
+
+end
+

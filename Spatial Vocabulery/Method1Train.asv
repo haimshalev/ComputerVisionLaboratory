@@ -1,0 +1,13 @@
+function [] = Method1Train( dbpath, histogramsPath, origin)
+
+% TODO : read the database and build the db as n x k x 2
+%db = ;
+
+% histograms is a k x Q x 2
+histograms = Train(db,origin);
+
+% write the histograms into file in histogramsPath
+save('C:\develop\LabCV\histograms.mat',
+
+end
+
