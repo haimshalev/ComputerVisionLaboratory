@@ -1,4 +1,4 @@
-function [] = ApplyAffineTransform( srcImage , AffinedModel , TransformedImageName )
+function [TransformedImage] = ApplyAffineTransform( srcImage , AffinedModel )
 %TransformImage apply a affine transform on a 3 dimensional Image to match
 %the supplied AffinedModel. Than, save the new image in the variable which name
 %was chosen by the third parameter
@@ -28,13 +28,13 @@ singlePrecisionImg = im2single(srcImage);
 singlePrecisionTMatrix = im2single(transformationMatrix);
 
 %Apply geometric transform to the src image
-outImage = step(htrans, singlePrecisionImg ,singlePrecisionTMatrix); 
+TransformedImage = step(htrans, singlePrecisionImg ,singlePrecisionTMatrix); 
 
 %Convert the output image back to uint8
-outImage = im2uint8(outImage);
+TransformedImage = im2uint8(TransformedImage);
 
 %Show the transformed Image
-figure,imshow(outImage),title('The Image after affined Transformation');
+figure,imshow(TransformedImage),title('The Image after affined Transformation');
 
 disp('...');
 disp('Press any key to add the model landmarks to the transformed image');
@@ -43,11 +43,9 @@ pause;
 
 
 %Display the Affined Model landmarks
-showboxes(outImage,AffinedModel),title('The Image after affined Transformation with the model Landmark');
+showboxes(TransformedImage,AffinedModel),title('The Image after affined Transformation with the model Landmark');
 
 disp('Finshed affine transformation.');
 
-%save the transformed image to a workspace variable
-assignin('base', TransformedImageName, outImage);
 end
 
