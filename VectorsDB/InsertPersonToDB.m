@@ -1,17 +1,21 @@
 function [ ] = InsertPersonToDB(PersonVector,PersonName)
 %InsertPersonToDB - Insert the person representation to db and saves the db
 
+disp('***InsertPersonToDB - Started***');
+
 %Get the Vectors DB
-VectorDB = GetVectorsDB();
+PersonsVectorsDB = GetVectorsDB();
 
 %Create a Person structure 
 person = struct('Name',PersonName,'Vector',PersonVector);
 
 %Insert the Vector to DB
-VectorDB = [VectorDB person];
+PersonsVectorsDB = [PersonsVectorsDB person];
 
 %Save the Vector DB
-save(GetVectorsDBPath(),VectorDB);
+save(GetVectorsDBPath(),'PersonsVectorsDB');
+
+disp('***InsertPersonToDB - Ended***');
 
 end
 
