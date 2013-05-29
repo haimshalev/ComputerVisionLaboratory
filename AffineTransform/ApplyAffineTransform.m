@@ -6,11 +6,6 @@ function [TransformedImage] = ApplyAffineTransform( srcImage , AffinedModel )
 %Display the source image
 clf; imagesc(srcImage); axis image; axis off; drawnow;title('Source Image');
 
-disp('...');
-disp('Press any key to add the model landmarks to the image');
-disp('...');
-pause;
-
 %Display the Affined Model landmarks
 showboxes(srcImage,AffinedModel),title('The Image before affine Transformation with the model Landmark');
 
@@ -35,11 +30,6 @@ TransformedImage = im2uint8(TransformedImage);
 
 %Show the transformed Image
 figure,imshow(TransformedImage),title('The Image after affined Transformation');
-
-disp('...');
-disp('Press any key to add the model landmarks to the transformed image');
-disp('...');
-pause;
 
 
 %Display the Affined Model landmarks
