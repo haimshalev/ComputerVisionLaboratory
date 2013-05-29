@@ -4,6 +4,6 @@ function [VectorDBPath] = GetVectorsDBPath()
 %TODO - in later versions get the db path from configuration file
 
 %Set the VectorsDB Path
-VectorDBPath = 'PersonsVectorsDB.mat';
+VectorDBPath = 'VectorsDB/PersonsVectorsDB.mat';
 
 end

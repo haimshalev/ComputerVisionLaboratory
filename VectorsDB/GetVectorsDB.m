@@ -6,6 +6,7 @@ VectorDBPath = GetVectorsDBPath();
 
 %Load the Vectors DB
 VectorsDB = load(VectorDBPath);
+VectorsDB = VectorsDB.PersonsVectorsDB;
 
 end 
 

@@ -8,6 +8,7 @@ modelPath = 'AffineTransform/AffineModel.mat';
 
 %Load the Affine Model 
 AffineModel = load(modelPath);
+AffineModel = AffineModel.AffineModel;
 
 end
 
