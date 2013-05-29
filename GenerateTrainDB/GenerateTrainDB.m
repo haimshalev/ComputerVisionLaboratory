@@ -1,3 +1,5 @@
+function [] = GenerateTrainDB()
+
 clc;
 
 % compile.m should work for Linux and Mac.
@@ -43,3 +45,5 @@ save(strcat(outputFolder, '/globalDB'), 'globalDBout');
 
 fprintf('a total of %d images were landmarked.\n', totalImages);
 disp('done!');
+
+end
