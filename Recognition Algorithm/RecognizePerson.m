@@ -13,19 +13,19 @@ PersonVector = CreatePersonVector(PersonImg);
 
 %if Found single vector in DB print the Name
 if (Found && ~Multiple)
-
-    fprintf('This persons name is %s',Person(i).Name);
+    
+    fprintf('\n ! This persons name is %s\n\n',Person(1).Name);
  
 else
     %if Found matchin persons but multiple
     if (Found)
         
-        disp ('Found Multiple matching persons in DB');
+        fprintf('\n ! Found Multiple matching persons in DB\n\n');
         
     %if don't found matching persons in DB
     else 
         
-        disp('Do not found matching persons in DB');
+        fprintf('\n ! Do not found matching persons in DB\n\n');;
     end
     
 end
