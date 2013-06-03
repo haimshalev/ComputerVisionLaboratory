@@ -20,9 +20,9 @@ save(GetAffineModelPath(),'AffineModel');
 %% Spatial Vocabulary init functions
 
 %Initalize Train DB
-%GenerateTrainDB();
+GenerateTrainDB();
 
 %Train and create Histogram of Spatial bins
-%Method1Train(GetTrainDBPath(),GetHistogramsPath());
+Method1Train(GetTrainDBPath(),GetHistogramsPath());
 
 end
