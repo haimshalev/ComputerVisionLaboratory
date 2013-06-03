@@ -4,7 +4,7 @@ function [TransformedImage] = ApplyAffineTransform( srcImage , AffinedModel )
 %was chosen by the third parameter
 
 %Display the source image
-clf; imagesc(srcImage); axis image; axis off; drawnow;title('Source Image');
+figure;clf; imagesc(srcImage); axis image; axis off; drawnow;title('Source Image');
 
 %Display the Affined Model landmarks
 showboxes(srcImage,AffinedModel),title('The Image before affine Transformation with the model Landmark');

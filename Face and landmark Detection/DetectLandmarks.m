@@ -1,4 +1,9 @@
-function [ model ] = DetectLandmarks(srcImg)
+function [ model ] = DetectLandmarks(srcImg , CustomLandmarks)
+
+%On default beavior enable all landmarks
+if (nargin == 1)
+    CustomLandmarks = 0;
+end
 %DetectLandmarks get an image and try to detect facial landmarks using the
 %face detector and landmarks finder engine 
 
@@ -53,12 +58,14 @@ dettime = toc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Remove all the disabled Landmarks
 
-%Load the Enabled Landmarks matrix
-EnabledLandmarksMatrix = load(GetEnabledLandmarksPath());
-EnabledLandmarksMatrix = EnabledLandmarksMatrix.EnabledLandmarks;
+if (CustomLandmarks == 1)
+    %Load the Enabled Landmarks matrix
+    EnabledLandmarksMatrix = load(GetEnabledLandmarksPath());
+    EnabledLandmarksMatrix = EnabledLandmarksMatrix.EnabledLandmarks;
 
-%Remove all the disabled landmarks
-model(1).xy = model(1).xy(EnabledLandmarksMatrix,:);
+    %Remove all the disabled landmarks
+    model(1).xy = model(1).xy(EnabledLandmarksMatrix,:);
+end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

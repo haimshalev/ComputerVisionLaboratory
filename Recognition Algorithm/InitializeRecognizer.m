@@ -10,7 +10,7 @@ save(GetEnabledLandmarksPath(),'EnabledLandmarks');
 
 %Create An affine model
 modelImage = imread('Resources/GT Affine Transformed Colored/s01/01.jpg');
-AffineModel = DetectLandmarks(modelImage);
+AffineModel = DetectLandmarks(modelImage,1);
 
 
 %Save the model the to the affine model location
