@@ -50,6 +50,18 @@ model = nms_face(model,0.3);
 %stop the timer
 dettime = toc;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Remove all the disabled Landmarks
+
+%Load the Enabled Landmarks matrix
+EnabledLandmarksMatrix = load(GetEnabledLandmarksPath());
+EnabledLandmarksMatrix = EnabledLandmarksMatrix.EnabledLandmarks;
+
+%Remove all the disabled landmarks
+model(1).xy = model(1).xy(EnabledLandmarksMatrix,:);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % show highest scoring detection and performance
 figure,showboxes(srcImg, model(1)),title('Highest scoring detection');
 fprintf('Detection took %.1f seconds\n',dettime);
