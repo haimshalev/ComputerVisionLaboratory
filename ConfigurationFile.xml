@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--Recognizer configurator-->
+<Recognizer>
+  
+  <!-- All the mandatory folders relative paths that the project needs  -->
+  <MandatoryFolderPaths>
+    <folder>AffineTransform</folder>
+    <folder>Face and Landmark Detection</folder>
+    <folder>GenerateTrainDB</folder>
+    <folder>Recognition Algorithm</folder>
+    <folder>Spatial Vocabulery</folder>
+    <folder>TrainDB</folder>
+    <folder>VectorsDB</folder>
+  </MandatoryFolderPaths>
+  
+  
+  <!-- Every subProject configuration-->
+  
+  
+  <AffineTransform>
+    <!-- The image from which the affine model built -->
+    <ModelInputImage>Resources/GT Affine Transformed Colored/s01/01.jpg</ModelInputImage>  
+    <!-- The path to the affine model -->
+    <AffineModelPath>AffineTransform/AffineModel.mat</AffineModelPath>
+    <!-- The path to the enabled landmarks matrix - A matrix with zeros in the places where the landmarks disabled and ones in the rest-->
+    <EnabledLandmarksPath>AffineTransform/EnabledLandmarks.mat</EnabledLandmarksPath>
+  </AffineTransform>
+  
+  
+  <GenerateTrainDB>
+    <!-- The folder from which the Train DB is built -->
+    <InputDBFolder>Resources/GT Affine Transformed Colored</InputDBFolder>
+    <!-- The path to the Train DB folder  - This folder will save the main train DB file and detection of the InputDB faces-->
+    <TrainDBFolder>TrainDB/</TrainDBFolder>
+    <!-- The Path to the main Train DB file -->
+    <TrainDBFilePath>TrainDB/globalDB.mat</TrainDBFilePath>
+  </GenerateTrainDB>
+  
+  
+  <SpatialVocabulary>
+    <!-- The path to the spatial inforamtion histogram -->
+    <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
+  </SpatialVocabulary>
+  
+  
+  <VectorsDB>
+    <!-- The path to the Vectors DB file - this file hold person structs which bukt from Name and Representaion Vector -->
+    <VectorsDBPath>VectorsDB/PersonsVectorsDB.mat</VectorsDBPath>
+  </VectorsDB>
+  
+  
+</Recognizer>

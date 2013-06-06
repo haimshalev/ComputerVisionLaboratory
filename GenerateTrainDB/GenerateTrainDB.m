@@ -38,8 +38,8 @@ else
     error('Can not recognize this model');
 end
 
-dir = 'Resources\GT Affine Transformed Colored';
-outputFolder = 'TrainDB/';
+dir = FindSubProjectConfiguration('GenerateTrainDB','InputDBFolder');
+outputFolder = FindSubProjectConfiguration('GenerateTrainDB','TrainDBFolder');
 [totalImages, globalDBout] = FolderImagesToLandmarks(dir, model, 0, [], posemap, outputFolder);
 save(strcat(outputFolder, '/globalDB'), 'globalDBout');
 
