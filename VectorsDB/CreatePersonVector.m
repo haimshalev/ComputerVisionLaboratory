@@ -9,6 +9,10 @@ ImageModel = DetectLandmarks(PersonImg);
 % Create the landmarks positions matrix
 PositionsMatrix = GetPositionsMatrix(ImageModel);
 
+%{
+
+TODO : Add this code when Toni's part is done
+
 %Get the Affine transform model
 AffinedModel = GetAffineModel();
 
@@ -20,6 +24,7 @@ AffineImageModel = DetectLandmarks(AffinedImg);
 
 % Create the landmarks positions matrix
 AffinePositionsMatrix = GetPositionsMatrix(AffineImageModel);
+%}
 
 %Initialize the person Vector
 PersonVector = [];
