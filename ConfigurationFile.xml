@@ -30,7 +30,7 @@
   
   <GenerateTrainDB>
     <!-- The folder from which the Train DB is built -->
-    <InputDBFolder>Resources/GT Affine Transformed Colored</InputDBFolder>
+    <InputDBFolder>Resources/NimrodAndNihad Pictures</InputDBFolder>
     <!-- The path to the Train DB folder  - This folder will save the main train DB file and detection of the InputDB faces-->
     <TrainDBFolder>TrainDB/</TrainDBFolder>
     <!-- The Path to the main Train DB file -->
@@ -48,6 +48,10 @@
     <!-- The path to the Vectors DB file - this file hold person structs which bukt from Name and Representaion Vector -->
     <VectorsDBPath>VectorsDB/PersonsVectorsDB.mat</VectorsDBPath>
   </VectorsDB>
+  
+  <FaceAndLandmarkDetection>
+      <MaxImageSizeDim1>500</MaxImageSizeDim1>
+  </FaceAndLandmarkDetection>
   
   
 </Recognizer>

@@ -4,6 +4,7 @@ function [ model ] = DetectLandmarks(srcImg , CustomLandmarks)
 if (nargin == 1)
     CustomLandmarks = 0;
 end
+
 %DetectLandmarks get an image and try to detect facial landmarks using the
 %face detector and landmarks finder engine 
 
@@ -16,25 +17,19 @@ end
 % Pre-trained model with 146 parts. Works best for faces larger than 80*80
 load face_p146_small.mat
 
-% % Pre-trained model with 99 parts. Works best for faces larger than 150*150
-% load face_p99.mat
-
-% % Pre-trained model with 1050 parts. Give best performance on localization, but very slow
-% load multipie_independent.mat
-
 % 5 levels for each octave
 model.interval = 5;
 % set up the threshold
 model.thresh = min(-0.65, model.thresh);
 
-% define the mapping from view-specific mixture id to viewpoint
-if length(model.components)==13 
-    posemap = 90:-15:-90;
-elseif length(model.components)==18
-    posemap = [90:-15:15 0 0 0 0 0 0 -15:-15:-90];
-else
-    error('Can not recognize this model');
-end
+%% Scaling stage
+
+%Scale the input image if necessery
+
+%Gets the maximum size of rows in the image from configuration file
+maxSize = str2double(FindSubProjectConfiguration('FaceAndLandmarkDetection','MaxImageSizeDim1'));
+currentSize = size(srcImg,1);
+scaledImg = imresize(srcImg,maxSize/currentSize);
 
 %% Detecting stage
 
@@ -44,8 +39,8 @@ disp('Starting detection of facial landmarks in the source image..');
 tic;
 
 %detect the model best fit to the picture 
-model = detect(srcImg, model, model.thresh);
-model = clipboxes(srcImg, model);
+model = detect(scaledImg, model, model.thresh);
+model = clipboxes(scaledImg, model);
 
 %Suppress the results - only take the high scoring detections and skip
 %detections that are significantly covered by  a previously selected
@@ -68,6 +63,9 @@ if (CustomLandmarks == 1)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Scale the results to the original image
+model(1).xy = model(1).xy .* (currentSize/maxSize);
 
 % show highest scoring detection and performance
 figure,showboxes(srcImg, model(1)),title('Highest scoring detection');
