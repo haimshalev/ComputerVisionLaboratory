@@ -1,4 +1,4 @@
-function [ TrainDB ] = GenerateTrainDB_ZandH(SourceTrainDBPath)
+function [ TrainDB ] = GenerateTrainDB(SourceTrainDBPath)
     fileList = GetAllFilesSpecificType(SourceTrainDBPath,'jpg');
        
     [fileListSize,~] = size(fileList);
