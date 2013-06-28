@@ -1,0 +1,32 @@
+function featureValue = CalculateFeatureValue( landmarks, feature )
+
+[polygonXs, polygonYs] = XYVectorsFromPolygon(landmarks, feature.Polygon);
+[ geom, iner, cpmo ] = polygeom( polygonXs, polygonYs );
+switch (feature.Property)
+    case 1 % area
+        %featureValues(i) = CalculateArea(reshapedDB, feature.Polygon);
+        featureValue = geom(1);
+    case 2 % diameter
+        %featureValues(i) = CalculateDiameter(reshapedDB, feature.Polygon);
+        featureValue = geom(4);
+%     case 4 % centroid
+%         featureValues(i) = CalculateCentroid(reshapedDB, feature.Polygon);
+    %cpmo = [ I1  ang1  I2  ang2  J ];
+    case 3 % centroidal principal moments 1st eigenvalue
+        featureValue = cpmo(1);
+    case 4 % centroidal principal moments 1st eigenvector angle
+        featureValue = cpmo(2);
+    case 5 % centroidal principal moments 2st eigenvalue
+        featureValues(i) = cpmo(3);
+    case 6 % centroidal principal moments 2st eigenvector angle
+        featureValues(i) = cpmo(4);
+    case 7 % J
+        featureValues(i) = cpmo(5);
+    case 8 % sides ratios
+        featureValues(i) = CalculateSidesRatio(reshapedDB, feature.Polygon);
+    otherwise
+        disp('Error: unknown Property number.');
+end
+
+end
+

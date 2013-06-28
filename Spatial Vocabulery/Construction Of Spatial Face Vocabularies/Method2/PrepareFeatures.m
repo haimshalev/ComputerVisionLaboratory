@@ -1,0 +1,34 @@
+function P = PrepareFeatures()
+%           P is a l x 1. l is the number of features.
+%               Each cell in P is a struct { Polygon, property }
+%               Polygon is a vector<LandmarkIndex>
+%               property is an integer describing the propery to take from
+%               the polygons (area, diameter...).
+
+properties = [1,2,6,7,8]; % 1 - area, 2 - diameter, 3 - sides ratio
+polygon1 = [3, 59, 56]; % left cheek
+polygon2 = [5, 68, 65]; % right cheek
+polygon3 = [9, 3, 5]; % nose
+polygon4 = [32, 33, 34, 35, 48, 51, 46, 44, 41, 40, 39]; % mouth
+polygon5 = [19, 15, 10]; % above left eye
+polygon6 = [21, 26, 30]; % above right eye
+polygon7 = [68, 67, 66, 65, 64, 63, 62, 61, 52, 53, 54, 55, 56, 57, 58,...
+    59, 60, 16, 17, 18, 19, 20, 31, 30, 29, 28, 27]; % the face contour
+polygon8 = [41, 44, 46, 51, 48, 35, 55, 54, 53, 52, 61, 62, 63]; % main chin polygon
+polygon9 = [3, 2, 1, 4, 5, 41, 40, 39, 32, 33, 34, 35]; % are between nose and mouth
+
+% % bad polygons : 1,2,5
+% % medium 6
+
+polygons = struct('polygonsVertices', {polygon1, polygon4, polygon7, polygon8});
+
+pIndex = 1;
+for i=1:length(properties)
+    for j=1:length(polygons)
+        P(pIndex) = struct('Polygon', polygons(j).polygonsVertices,...
+            'Property', properties(i));
+        pIndex = pIndex + 1;
+    end
+end
+
+end

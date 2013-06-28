@@ -1,0 +1,15 @@
+function area = CalculateArea( landmarks, polygon )
+% INPUT : 
+%           landmarks k x 2 (k - number of landmarks)
+%           polygon is a vector<LandmarkIndex>
+
+% OUTPUT : 
+%           area - the area of the polygon in the landmarks' positions
+
+polygonXs = zeros(1, length(polygon));
+polygonYs = zeros(1, length(polygon));
+
+
+
+end
+

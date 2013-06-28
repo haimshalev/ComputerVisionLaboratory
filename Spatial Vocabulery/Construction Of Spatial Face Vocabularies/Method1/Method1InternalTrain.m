@@ -1,4 +1,4 @@
-function [ histograms ] = Train( db, origin, Q, P )
+function [ histograms ] = Method1InternalTrain( db, Q, P )
 % INPUT : 
 %           db n x k x 2 (n - number of images, k - number of landmarks)
 %           Q number of bins
@@ -7,23 +7,20 @@ function [ histograms ] = Train( db, origin, Q, P )
 % OUTPUT : 
 %           histograms is a l x Q x 2
 
-% if Q and P are not set then the function uses default values.
-if (nargin < 4)
-    Q = 10;
-    
-    [~,k,~] = size(db);
-    P = 1:k;
-end
+originIndex = PrepareOriginIndex();
+
+[n,k,~] = size(db);
+originsLocations = reshape(db(:,originIndex,:),n,2);
 
 % filter db according to P
 l = length(P);
-filteredDB = zeors(n,l,2);
+filteredDB = zeros(n,l,2);
 for i=1:l
-    filteredDB(
+    filteredDB(:,i,:) = db(:,P(i),:);
 end
 
 % calculate all the chosen landmarks histograms
-histograms = CalculateHistograms(filteredDB,origin,Q);
+histograms = Method1CalculateHistograms(filteredDB,originsLocations,Q);
 
 
 end

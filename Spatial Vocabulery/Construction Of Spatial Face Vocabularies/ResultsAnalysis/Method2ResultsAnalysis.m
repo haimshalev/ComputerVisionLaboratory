@@ -1,0 +1,149 @@
+clc
+clear all
+close all
+
+addpath ../Optimization
+
+load('../../Optimization/Method2/Method2ParametersScores.mat');
+% 
+% % remove
+% properties = [1,2,6,7,8]; % 1 - area, 2 - diameter, 3 - sides ratio
+% polygon1 = [3, 59, 56]; % left cheek
+% polygon2 = [5, 68, 65]; % right cheek
+% polygon3 = [9, 3, 5]; % nose
+% polygon4 = [32, 33, 34, 35, 48, 51, 46, 44, 41, 40, 39]; % mouth
+% polygon5 = [19, 15, 10]; % above left eye
+% polygon6 = [21, 26,5 30]; % above right eye
+% polygon7 = [68, 67, 66, 65, 64, 63, 62, 61, 52, 53, 54, 55, 56, 57, 58,...
+%     59, 60, 16, 17, 18, 19, 20, 31, 30, 29, 28, 27]; % the face contour
+% polygon8 = [41, 44, 46, 51, 48, 35, 55, 54, 53, 52, 61, 62, 63]; % main chin polygon
+% polygon9 = [3, 2, 1, 4, 5, 41, 40, 39, 32, 33, 34, 35]; % are between nose and mouth
+% 
+%  polygons = struct('polygonsVertices', {polygon1, polygon4, polygon7, polygon8});
+% 
+% polygonsIndices = 1:length(polygons);
+% 
+% propertiesPowerset = PowerSet(properties);
+% polygonsIndicesPowerSet = PowerSet(polygonsIndices);
+% 
+% Qs = 30:10:60;
+% zs = 15:5:30;%15:5:25;
+% % remove
+
+
+[bestQ, bestz, bestPolygons, bestProperties] = ...
+    Method2GetBestParams( scores, Qs, zs, polygonsIndicesPowerSet,propertiesPowerset,polygons )
+
+propertiesFullSets = propertiesPowerset(length(propertiesPowerset));
+propertiesFullSet = propertiesFullSets{1};
+numberOfPropertiesSubsets = 2^length(propertiesFullSet) - 1; % not including empty set
+
+polygonsFullSets = polygonsIndicesPowerSet(length(polygonsIndicesPowerSet));
+polygonsFullSet = polygonsFullSets{1};
+numberOfPolygonsSubsets = 2^length(polygonsFullSet) - 1; % not including empty set
+
+% plot robustness
+method = 'Method2';
+histogramsPath = strcat('../..\',method, '\Georgia Tech\tmp\histograms.mat');
+comparisonPath = strcat('../..\',method, '\Georgia Tech\Comparison\');
+
+alignedImages = false;
+if(alignedImages)
+    basePath = strcat('../..\FaceDBLandmarks\GT Affine Transformed Colored\Georgia Tech\');
+    dbPath = '../..\face-release1.0-basic\output\FaceDB\GT Affine Transformed Colored - Trimmed\globalDB.mat';
+else
+    basePath = strcat('../..\FaceDBLandmarks\OriginalImages\Georgia Tech\');
+    dbPath = '../../FaceDBLandmarks/OriginalImages/Georgia Tech/globalDB.mat';
+end
+
+pIndex = 1;
+for i=1:length(bestProperties)
+    for j=1:length(bestPolygons)
+        bestP(pIndex) = struct('Polygon', bestPolygons(j).polygonsVertices,...
+            'Property', bestProperties(i));
+        pIndex = pIndex + 1;
+    end
+end
+
+PlotRobustness(@Method2Train, @Method2GenerateVector, bestQ, bestz, bestP, basePath, dbPath, histogramsPath, comparisonPath);
+
+% % plot 3D graph run on Qs and sets of one property
+% 
+%     Qscores = ...
+%         reshape(scores(:, :, 1, 1), length(Qs), length(zs));
+%     figure; mesh(Qs,zs, Qscores');
+%     title('polygons = 1,4,7,8 properties = 1,2,6,7,8');
+%     xlabel('Q');
+%     ylabel('z');
+%     zlabel('score');
+%     grid on
+
+% plot 3D graph run on Qs and sets of one property
+for i = 1:length(Qs)
+    for j = 1:length(propertiesFullSet)
+        Qscores = ...
+            reshape(scores(i, :, j, :), length(zs), numberOfPolygonsSubsets);
+        figure; mesh(zs, 1:numberOfPolygonsSubsets, Qscores');
+        title(strcat('Q = ', num2str(Qs(i)),' property = ', num2str(propertiesFullSet(j))));
+        xlabel('z');
+        ylabel('polygons');
+        zlabel('score');
+        grid on
+    end
+end
+
+% plot 3D graph run on Qs and sets of one polygon
+for i = 1:length(Qs)
+    for j = 1:length(polygonsFullSet)
+        Qscores = ...
+            reshape(scores(i, :, :, j), length(zs), numberOfPropertiesSubsets);
+        figure; mesh(zs, 1:numberOfPropertiesSubsets, Qscores');
+        title(strcat('Q = ', num2str(Qs(i)),' polygon = ', num2str(polygonsFullSet(j))));
+        xlabel('z');
+        ylabel('properties');
+        zlabel('score');
+        grid on
+    end
+end
+
+% plot 3D graph run on zs and sets of one property
+for i = 1:length(zs)
+    for j = 1:length(propertiesFullSet)
+        Qscores = ...
+            reshape(scores(:, i, j, :), length(Qs), numberOfPolygonsSubsets);
+        figure; mesh(Qs, 1:numberOfPolygonsSubsets, Qscores');
+        title(strcat('z = ', num2str(zs(i)),' property = ', num2str(propertiesFullSet(j))));
+        xlabel('Q');
+        ylabel('polygons');
+        zlabel('score');
+        grid on
+    end
+end
+
+% plot 3D graph run on zs and sets of one polygon
+for i = 1:length(zs)
+    for j = 1:length(polygonsFullSet)
+        Qscores = ...
+            reshape(scores(:, i, :, j), length(Qs), numberOfPropertiesSubsets);
+        figure; mesh(Qs, 1:numberOfPropertiesSubsets, Qscores');
+        title(strcat('z = ', num2str(zs(i)),' polygon = ', num2str(polygonsFullSet(j))));
+        xlabel('Q');
+        ylabel('properties');
+        zlabel('score');
+        grid on
+    end
+end
+
+% plot 3D graph run on sets of one property and sets of one polygon
+for i = 1:length(propertiesFullSet)
+    for j = 1:length(polygonsFullSet)
+        Qscores = ...
+            reshape(scores(:, :, i, j), length(zs), length(Qs));
+        figure; mesh(zs,Qs, Qscores');
+        title(strcat('property = ', num2str(num2str(propertiesFullSet(i))),' polygon = ', num2str(polygonsFullSet(j))));
+        xlabel('z');
+        ylabel('Q');
+        zlabel('score');
+        grid on
+    end
+end

@@ -1,4 +1,11 @@
-function [faceSpatialRepresentor] = Method1GenerateVector( histogramsPath, landmarksPath )
+function [faceSpatialRepresentor] = Method1GenerateVector( histogramsPath, landmarksPath, z, P)
+
+% if z and P are not set then the function uses default values.
+if (nargin < 4)
+    z = 10;
+
+    P = 1:k;
+end
 
 % histograms is a k x Q x 2 - 
 % first dim is the landmarks
@@ -11,6 +18,10 @@ load(landmarksPath);
 
 originIndex = PrepareOriginIndex();
 origin = currOutput(originIndex, :);
+
+% landmarks is k x 2
+% landmarksHistograms is k x Q x 2
+[k,~] = size(landmarks);
 
 faceSpatialRepresentor = Method1InternalGenerateVector(currOutput, origin, histograms);
 

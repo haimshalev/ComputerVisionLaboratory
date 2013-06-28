@@ -2,19 +2,21 @@ function [ histograms ] = Train( db, Q, P )
 % INPUT : 
 %           db n x k x 2 (n - number of images, k - number of landmarks)
 %           Q number of bins
-%           P is a l x 1 (l <= k) of indices of chosen landmarks
+%           P is a l x 1. l is the number of features.
+%               Each cell in P is a struct { list<Polygon>, property }
+%               Polygon is a struct { list<LandmarkIndex }
+%               property is an integer describing the propery to take from
+%               the polygons (area, diameter...).
 
 % OUTPUT : 
-%           histograms is a l x Q x 2
-
-originIndex = PrepareOriginIndex();
+%           histograms is a l x t x Q x 2
+%           where t = max(
 
 [n,k,~] = size(db);
-originsLocations = reshape(db(:,originIndex,:),n,2);
 
 % if Q and P are not set then the function uses default values.
-if (nargin < 4)
-    Q = 50;
+if (nargin < 3)
+    Q = 25;
     
     [~,k,~] = size(db);
     P = 1:k;
@@ -28,7 +30,7 @@ for i=1:l
 end
 
 % calculate all the chosen landmarks histograms
-histograms = CalculateHistograms(filteredDB,originsLocations,Q);
+histograms = CalculateHistograms(filteredDB, Q);
 
 
 end

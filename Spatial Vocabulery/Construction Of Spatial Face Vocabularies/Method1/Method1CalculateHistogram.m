@@ -1,4 +1,4 @@
-function [ histogram ] = CalculateHistogram( singleTypeLandmarks, originsLocations, Q )
+function [ histogram ] = Method1CalculateHistogram( singleTypeLandmarks, originsLocations, Q )
 % singleTypeLandmarks is a n x 2 (n - number of images)
 
 % OUTPUT : 

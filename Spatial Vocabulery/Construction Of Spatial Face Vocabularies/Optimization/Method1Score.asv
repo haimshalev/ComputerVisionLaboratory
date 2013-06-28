@@ -1,0 +1,26 @@
+function score = Method1Score( intraDistances, interDistances )
+%METHOD1SCORE Summary of this function goes here
+%   Detailed explanation goes here
+
+[interDistancesBinsCounts, interDistancesBinsCenters] = hist(interDistances');
+[intraDistancesBinsCounts, intraDistancesBinsCenters] = hist(intraDistances');
+
+interDistancesBinsCounts = NormalizeVector(interDistancesBinsCounts);
+interDistancesCenterOfGravity = ...
+    sum(interDistancesBinsCounts.*interDistancesBinsCenters)/sum(interDistancesBinsCounts);
+%     min(interDistancesBinsCenters(interDistancesBinsCounts > 0));
+
+intraDistancesBinsCenters = intraDistancesBinsCenters(intraDistancesBinsCounts > 0);
+intraDistancesBinsCounts = intraDistancesBinsCounts(intraDistancesBinsCounts > 0);
+intraDistancesBinsCounts = NormalizeVector(intraDistancesBinsCounts);
+intraDistancesCenterOfGravity = ...
+    sum(intraDistancesBinsCounts.*intraDistancesBinsCenters)/sum(intraDistancesBinsCounts);
+%        max(intraDistancesBinsCenters(intraDistancesBinsCounts > 0));
+% if intraDistancesCenterOfGravity > interDistancesCenterOfGravity
+%     score = Inf;
+% else
+    score = interDistancesCenterOfGravity - intraDistancesCenterOfGravity;
+% end
+
+end
+
