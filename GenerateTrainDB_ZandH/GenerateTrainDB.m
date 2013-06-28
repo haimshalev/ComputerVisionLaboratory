@@ -1,4 +1,5 @@
 function [ TrainDB ] = GenerateTrainDB(SourceTrainDBPath)
+    
     fileList = GetAllFilesSpecificType(SourceTrainDBPath,'jpg');
        
     [fileListSize,~] = size(fileList);
@@ -6,7 +7,6 @@ function [ TrainDB ] = GenerateTrainDB(SourceTrainDBPath)
     for i=1:fileListSize
         CurrentFileName = fileList(i);
         CurrentPerson = imread(CurrentFileName{1});
-        figure;imshow(CurrentPerson);
         
         %Detect Landmark in the image
         ImageModel = DetectLandmarks(CurrentPerson);
