@@ -7,7 +7,7 @@
   <MandatoryFolderPaths>
     <folder>AffineTransform</folder>
     <folder>Face and Landmark Detection</folder>
-    <folder>GenerateTrainDB</folder>
+    <folder>GenerateTrainDB_ZandH</folder>
     <folder>Recognition Algorithm</folder>
     <folder>Spatial Vocabulery</folder>
     <folder>TrainDB</folder>
@@ -39,6 +39,8 @@
   
   
   <SpatialVocabulary>
+    <!-- Spatial Representation method -->
+    <Method>2</Method>
     <!-- The path to the spatial inforamtion histogram -->
     <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
   </SpatialVocabulary>
@@ -50,6 +52,7 @@
   </VectorsDB>
   
   <FaceAndLandmarkDetection>
+      <!-- The maximum size of an image (Dimension 1 - Lines) which allowed to participate in the detection algorithm ( used for scaling)  -->
       <MaxImageSizeDim1>500</MaxImageSizeDim1>
   </FaceAndLandmarkDetection>
   
