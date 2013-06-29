@@ -59,7 +59,12 @@
   <RecognitionAlgorithm>
     <!-- The optimal treshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
     <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
-  </RecognitionAlgorithm>
+    <!-- The path to the Registered test subjects folder  -->
+    <RegisterSubjectsFolder>Resources/GT Affine Transformed Colored</RegisterSubjectsFolder>
+    <!-- The path to the Recognize test subjects folder -->
+    <RecognizeSubjectsFolder>Resources/Georgia Tech_orig</RecognizeSubjectsFolder>
+  
+</RecognitionAlgorithm>
   
   
 </Recognizer>
