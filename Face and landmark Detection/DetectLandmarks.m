@@ -1,4 +1,8 @@
-function [ model ] = DetectLandmarks(srcImg , CustomLandmarks)
+function [ model ] = DetectLandmarks(srcImg , CustomLandmarks , showFigures)
+
+if (nargin < 3)
+    showFigures =  false;
+end
 
 %On default beavior enable all landmarks
 if (nargin == 1)
@@ -68,7 +72,10 @@ end
 model(1).xy = model(1).xy .* (currentSize/maxSize);
 
 % show highest scoring detection and performance
-figure,showboxes(srcImg, model(1)),title('Highest scoring detection');
+if (showFigures == true)
+    figure,showboxes(srcImg, model(1)),title('Highest scoring detection');
+end
+
 fprintf('Detection took %.1f seconds\n',dettime);
 
 disp('Detection Finished , A facial model was created');
