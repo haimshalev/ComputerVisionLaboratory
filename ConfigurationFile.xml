@@ -39,7 +39,7 @@
   
   
   <SpatialVocabulary>
-    <!-- Spatial Representation method -->
+    <!-- Spatial Representation method - On every change the recognition treshold should change also -->
     <Method>2</Method>
     <!-- The path to the spatial inforamtion histogram -->
     <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
@@ -55,6 +55,11 @@
       <!-- The maximum size of an image (Dimension 1 - Lines) which allowed to participate in the detection algorithm ( used for scaling)  -->
       <MaxImageSizeDim1>500</MaxImageSizeDim1>
   </FaceAndLandmarkDetection>
+
+  <RecognitionAlgorithm>
+    <!-- The optimal treshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
+    <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
+  </RecognitionAlgorithm>
   
   
 </Recognizer>
