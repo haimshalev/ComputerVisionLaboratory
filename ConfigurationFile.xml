@@ -30,10 +30,10 @@
   <TrainDB>
     <!-- The folder from which the Train DB is built -->
     <InputDBFolder>Resources\Tests\Images 4 Train DB</InputDBFolder>
-    <!-- The path to the Train DB folder  - This folder will save the main train DB file and detection of the InputDB faces-->
-    <TrainDBFolder>TrainDB/</TrainDBFolder>
     <!-- The Path to the main Train DB file -->
-    <TrainDBFilePath>TrainDB/globalDB.mat</TrainDBFilePath>
+    <TrainDBFilePath>TrainDB/positionsDB.mat</TrainDBFilePath>
+    <!-- The Path to the patches train db file -->
+    <PatchesTrainDBFilePath>TrainDB/patchesDB.mat</PatchesTrainDBFilePath>
   </TrainDB>
   
   

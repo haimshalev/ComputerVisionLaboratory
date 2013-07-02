@@ -1,4 +1,4 @@
-function [ TrainDB ] = GenerateTrainDB(SourceTrainDBPath)
+function [ TrainDB , PatchesTrainDB ] = GenerateTrainDB(SourceTrainDBPath)
     
 disp('---- Generate Train DB ----');
 
@@ -6,6 +6,7 @@ disp('---- Generate Train DB ----');
        
     [fileListSize,~] = size(fileList);
     TrainDB = [];
+    PatchesTrainDB = [];
     
     
     for i=1:fileListSize
@@ -20,8 +21,12 @@ disp('---- Generate Train DB ----');
         ImageModel = DetectLandmarks(CurrentPerson);
         % Create the landmarks positions matrix
         PositionsMatrix = GetPositionsMatrix(ImageModel);
+        % Create the patches matrix
+        PatchesMatrix = GetPatchesMatrix(ImageModel);
         
         TrainDB(i,:,:) = PositionsMatrix;
+        PatchesTrainDB(i,:,:) = PatchesMatrix;
+        
     end
     
 disp('---- Generate Train DB succeeded ----');
