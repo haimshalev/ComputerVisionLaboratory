@@ -7,7 +7,6 @@
   <MandatoryFolderPaths>
     <folder>AffineTransform</folder>
     <folder>Face and Landmark Detection</folder>
-    <folder>GenerateTrainDB_ZandH</folder>
     <folder>Recognition Algorithm</folder>
     <folder>Spatial Vocabulery</folder>
     <folder>TrainDB</folder>
@@ -28,14 +27,14 @@
   </AffineTransform>
   
   
-  <GenerateTrainDB>
+  <TrainDB>
     <!-- The folder from which the Train DB is built -->
-    <InputDBFolder>Resources/NimrodAndNihad Pictures</InputDBFolder>
+    <InputDBFolder>Resources\Tests\Images 4 Train DB</InputDBFolder>
     <!-- The path to the Train DB folder  - This folder will save the main train DB file and detection of the InputDB faces-->
     <TrainDBFolder>TrainDB/</TrainDBFolder>
     <!-- The Path to the main Train DB file -->
     <TrainDBFilePath>TrainDB/globalDB.mat</TrainDBFilePath>
-  </GenerateTrainDB>
+  </TrainDB>
   
   
   <SpatialVocabulary>
@@ -60,9 +59,9 @@
     <!-- The optimal treshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
     <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
     <!-- The path to the Registered test subjects folder  -->
-    <RegisterSubjectsFolder>Resources/GT Affine Transformed Colored</RegisterSubjectsFolder>
+    <RegisterSubjectsFolder>Resources\Tests\Images 4 Registration</RegisterSubjectsFolder>
     <!-- The path to the Recognize test subjects folder -->
-    <RecognizeSubjectsFolder>Resources/Georgia Tech_orig</RecognizeSubjectsFolder>
+    <RecognizeSubjectsFolder>Resources\Tests\Images 4 Recognition</RecognizeSubjectsFolder>
   
 </RecognitionAlgorithm>
   

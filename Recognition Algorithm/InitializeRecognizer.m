@@ -24,10 +24,10 @@ save(GetAffineModelPath(),'AffineModel');
 %Initalize Train DB
 
 %Generate the train db positions structure
-globalDBout = GenerateTrainDB(FindSubProjectConfiguration('GenerateTrainDB','InputDBFolder')); %#ok<NASGU>
+globalDBout = GenerateTrainDB(FindSubProjectConfiguration('TrainDB','InputDBFolder')); %#ok<NASGU>
 
 %Save the train db structure
-outputFolder = FindSubProjectConfiguration('GenerateTrainDB','TrainDBFolder');
+outputFolder = FindSubProjectConfiguration('TrainDB','TrainDBFolder');
 save(strcat(outputFolder, '/globalDB'),'globalDBout');
 
 %Train and create Histogram of Spatial bins
