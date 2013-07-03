@@ -28,7 +28,14 @@ AfterAffineTransformationLandmarkPositions = GetPositionsMatrix(AffinedModel);
 
 BeforeAffineTransformationLandmarkPositions = GetPositionsMatrix(BeforeAffineModel);
 
-%% Step 4 : Find the affine transformation matrix H
+%% Step 4 : Scale the positions matrices
+
+AffineModelSize = AffinedModel.size(1);
+srcImgModelSize = BeforeAffineModel.size(1);
+
+AfterAffineTransformationLandmarkPositions = AfterAffineTransformationLandmarkPositions .* (srcImgModelSize/AffineModelSize);
+
+%% Step 5 : Find the affine transformation matrix H
 
 %Insert third column to the Before matrix to add free coficients
 BeforeAffineTransformationLandmarkPositions = [BeforeAffineTransformationLandmarkPositions ones(size(BeforeAffineTransformationLandmarkPositions,1),1)];
