@@ -52,7 +52,7 @@
   
   <FaceAndLandmarkDetection>
       <!-- The maximum size of an image (Dimension 1 - Lines) which allowed to participate in the detection algorithm ( used for scaling)  -->
-      <MaxImageSizeDim1>500</MaxImageSizeDim1>
+      <MaxImageSizeDim1>750</MaxImageSizeDim1>
   </FaceAndLandmarkDetection>
 
   <RecognitionAlgorithm>

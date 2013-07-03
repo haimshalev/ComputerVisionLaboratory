@@ -7,19 +7,19 @@ function [ EnabledLandmarks ] = ChooseEnabledLandmarks( )
 EnabledLandmarks  = zeros(68,1);
 
 %Left mouth
-EnabledLandmarks(50) = 1;
+EnabledLandmarks(35) = 1;
 
 %Right mouth
-EnabledLandmarks(41) = 1; 
+EnabledLandmarks(45) = 1; 
 
 %Right eye
-EnabledLandmarks(25) = 1;
+EnabledLandmarks(22) = 1;
 
 %Left eye
 EnabledLandmarks(11) = 1; 
 
 %Nose
-EnabledLandmarks(4) = 1;
+EnabledLandmarks(2) = 1;
 
 %Convert the matrix to logical
 EnabledLandmarks = logical(EnabledLandmarks);
