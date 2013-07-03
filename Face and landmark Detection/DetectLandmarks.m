@@ -71,6 +71,9 @@ end
 %Scale the results to the original image
 model(1).xy = model(1).xy .* (currentSize/maxSize);
 
+%Save the model original size
+model(1).size = size(srcImg);
+
 % show highest scoring detection and performance
 if (showFigures == true)
     figure,showboxes(srcImg, model(1)),title('Highest scoring detection');
