@@ -8,7 +8,7 @@
     <folder>AffineTransform</folder>
     <folder>Face and Landmark Detection</folder>
     <folder>Recognition Algorithm</folder>
-    <folder>Spatial Vocabulery</folder>
+    <folder>Spatial Vocabulary</folder>
     <folder>TrainDB</folder>
     <folder>VectorsDB</folder>
   </MandatoryFolderPaths>
@@ -32,21 +32,21 @@
     <InputDBFolder>Resources\Tests\Images 4 Train DB</InputDBFolder>
     <!-- The Path to the main Train DB file -->
     <TrainDBFilePath>TrainDB/positionsDB.mat</TrainDBFilePath>
-    <!-- The Path to the patches train db file -->
+    <!-- The Path to the patches train DB file -->
     <PatchesTrainDBFilePath>TrainDB/patchesDB.mat</PatchesTrainDBFilePath>
   </TrainDB>
   
   
   <SpatialVocabulary>
-    <!-- Spatial Representation method - On every change the recognition treshold should change also -->
+    <!-- Spatial Representation method - On every change the recognition threshold should change also -->
     <Method>2</Method>
-    <!-- The path to the spatial inforamtion histogram -->
+    <!-- The path to the spatial information histogram -->
     <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
   </SpatialVocabulary>
   
   
   <VectorsDB>
-    <!-- The path to the Vectors DB file - this file hold person structs which bukt from Name and Representaion Vector -->
+    <!-- The path to the Vectors DB file - this file hold person structures which built from Name and Representation Vector -->
     <VectorsDBPath>VectorsDB/PersonsVectorsDB.mat</VectorsDBPath>
   </VectorsDB>
   
@@ -56,7 +56,7 @@
   </FaceAndLandmarkDetection>
 
   <RecognitionAlgorithm>
-    <!-- The optimal treshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
+    <!-- The optimal threshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
     <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
     <!-- The path to the Registered test subjects folder  -->
     <RegisterSubjectsFolder>Resources\Tests\Images 4 Registration</RegisterSubjectsFolder>
