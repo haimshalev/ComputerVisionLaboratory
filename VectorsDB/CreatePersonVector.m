@@ -3,7 +3,7 @@ function [PersonVector] =  CreatePersonVector( PersonImg )
 
 disp('***CreatePersonVector - Started***');
 
-%Detect Landmark in the image
+%% Detect Landmark in the image
 ImageModel = DetectLandmarks(PersonImg);
 
 % Create the landmarks positions matrix
@@ -29,9 +29,22 @@ AffinePositionsMatrix = GetPositionsMatrix(AffineImageModel);
 %Initialize the person Vector
 PersonVector = [];
 
-%Create an appearence representation vector 
+%% Generate an appearence representation and Concat it to the other representations
 
-%Generate spatial vector representation and Concat it to the other representations
+%The spatial vocabulary code have some functions with the same name of the
+%functions in the appearance vocabulary, so each time we use one of the
+%vocabularies functions we need to specify which one we use.
+UseAppearanceVocabulary();
+
+%TODO - Generate the Appearance representation
+
+%% Generate spatial vector representation and Concat it to the other representations
+
+%The spatial vocabulary code have some functions with the same name of the
+%functions in the appearance vocabulary, so each time we use one of the
+%vocabularies functions we need to specify which one we use.
+UseSpatialVocabulary();
+
 PersonVector = [PersonVector ; GenerateSpatialRepresentation(PositionsMatrix)];
 
 disp('***CreatePersonVector - Ended***');
