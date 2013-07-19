@@ -8,7 +8,6 @@
     <folder>AffineTransform</folder>
     <folder>Face and Landmark Detection</folder>
     <folder>Recognition Algorithm</folder>
-    <folder>Spatial Vocabulary</folder>
     <folder>TrainDB</folder>
     <folder>VectorsDB</folder>
   </MandatoryFolderPaths>
@@ -38,12 +37,18 @@
   
   
   <SpatialVocabulary>
-    <!-- Spatial Representation method - On every change the recognition threshold should change also -->
-    <Method>2</Method>
-    <!-- The path to the spatial information histogram -->
-    <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
+      <!-- The Code folder to include when using the spatial vocabulary -->
+      <folder>Spatial Vocabulary</folder>
+      <!-- Spatial Representation method - On every change the recognition threshold should change also -->
+      <Method>2</Method>
+      <!-- The path to the spatial information histogram -->
+      <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
   </SpatialVocabulary>
   
+  <AppearanceVocabulary>
+      <!-- The code folder to include when using the appearance vocabulary -->
+      <folder>Appearance Vocabulary</folder>
+  </AppearanceVocabulary>
   
   <VectorsDB>
     <!-- The path to the Vectors DB file - this file hold person structures which built from Name and Representation Vector -->
@@ -62,7 +67,6 @@
     <RegisterSubjectsFolder>Resources\Tests\Images 4 Registration</RegisterSubjectsFolder>
     <!-- The path to the Recognize test subjects folder -->
     <RecognizeSubjectsFolder>Resources\Tests\Images 4 Recognition</RecognizeSubjectsFolder>
-  
 </RecognitionAlgorithm>
   
   
