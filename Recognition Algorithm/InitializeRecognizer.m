@@ -20,15 +20,10 @@ save(GetAffineModelPath(),'AffineModel');
 
 %% Initalize Train DB
 
-%Generate the train db positions structure
-[globalDBout,patchesTrainDBout] = GenerateTrainDB(FindSubProjectConfiguration('TrainDB','InputDBFolder')); %#ok<NASGU>
+InitializeTrainDB();
 
-%Save the train db structure
-outputPath = FindSubProjectConfiguration('TrainDB','PatchesTrainDBFilePath');
-save(outputPath,'patchesTrainDBout');
-
+%Get the output path of the positions matrix of the train db
 outputPath = FindSubProjectConfiguration('TrainDB','TrainDBFilePath');
-save(outputPath,'globalDBout');
 
 %% Spatial Vocabulary init functions
 
