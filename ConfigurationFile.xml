@@ -28,9 +28,11 @@
   
   <TrainDB>
     <!-- The folder from which the Train DB is built -->
-    <InputDBFolder>Resources\Tests\Images 4 Train DB</InputDBFolder>
+    <InputDBFolder>Resources\train_im</InputDBFolder>
+    <!-- The path to the trainDb images structure -->
+    <ImagesFilePath>TrainDB/imagesDB.mat</ImagesFilePath>
     <!-- The Path to the main Train DB file -->
-    <TrainDBFilePath>TrainDB/positionsDB.mat</TrainDBFilePath>
+    <PositionsTrainDBFilePath>TrainDB/positionsDB.mat</PositionsTrainDBFilePath>
     <!-- The Path to the patches train DB file -->
     <PatchesTrainDBFilePath>TrainDB/patchesDB.mat</PatchesTrainDBFilePath>
   </TrainDB>
@@ -41,6 +43,8 @@
       <folder>Spatial Vocabulary</folder>
       <!-- Spatial Representation method - On every change the recognition threshold should change also -->
       <Method>2</Method>
+      <!-- The optimal threshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
+      <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
       <!-- The path to the spatial information histogram -->
       <HistogramsPath>TrainDB/histograms.mat</HistogramsPath>
   </SpatialVocabulary>
@@ -48,6 +52,10 @@
   <AppearanceVocabulary>
       <!-- The code folder to include when using the appearance vocabulary -->
       <folder>Appearance Vocabulary</folder>
+      <!-- The optimal treshold between the output representation vectors -->
+      <AppearanceVocabularyTreshold>108</AppearanceVocabularyTreshold>
+      <!-- The path to the appearance information struct -->
+      <AppearanceDBPath>TrainDB/appearances.mat</AppearanceDBPath>
   </AppearanceVocabulary>
   
   <VectorsDB>
@@ -61,8 +69,6 @@
   </FaceAndLandmarkDetection>
 
   <RecognitionAlgorithm>
-    <!-- The optimal threshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
-    <SpatialVocabularyTreshold>180</SpatialVocabularyTreshold>
     <!-- The path to the Registered test subjects folder  -->
     <RegisterSubjectsFolder>Resources\Tests\Images 4 Registration</RegisterSubjectsFolder>
     <!-- The path to the Recognize test subjects folder -->
