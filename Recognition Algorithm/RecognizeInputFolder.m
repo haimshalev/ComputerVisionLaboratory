@@ -24,7 +24,7 @@ end
 
 function [] = LoadAndRecognize(imgName)
 %Load an img and try to recognize it's identity from DB
-importedImg = imread(imgName);
+importedImg = ScaledImRead(imgName);
 
 RecognizePerson(importedImg);
 

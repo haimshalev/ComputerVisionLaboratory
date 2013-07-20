@@ -24,7 +24,7 @@ end
 function [] = LoadAndReg(imgName)
 %Load an img and register it to the vector DB
 
-importedImg = imread(imgName);
+importedImg = ScaledImRead(imgName);
 
 RegisterPerson(importedImg,imgName);
 

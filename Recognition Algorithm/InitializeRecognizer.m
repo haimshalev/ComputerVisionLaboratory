@@ -11,9 +11,8 @@ EnabledLandmarks = ChooseEnabledLandmarks();  %#ok<NASGU>
 save(GetEnabledLandmarksPath(),'EnabledLandmarks');
 
 %Create An affine model
-modelImage = imread(FindSubProjectConfiguration('AffineTransform','ModelInputImage'));
+modelImage = ScaledImRead(FindSubProjectConfiguration('AffineTransform','ModelInputImage'));
 AffineModel = DetectLandmarks(modelImage,1);  %#ok<NASGU>
-
 
 %Save the model the to the affine model location
 save(GetAffineModelPath(),'AffineModel');
