@@ -9,12 +9,13 @@ bClose = false;
 
 %initialize the distance treshold
 %We are not allowing more the tresh different
-SpatialVocabularyTresh = str2double(FindSubProjectConfiguration('RecognitionAlgorithm','SpatialVocabularyTreshold')); 
+AllowedTresh = str2double(FindSubProjectConfiguration('SpatialVocabulary','SpatialVocabularyTreshold')); 
+AllowedTresh = AllowedTresh + str2double(FindSubProjectConfiguration('AppearanceVocabulary','AppearanceVocabularyTreshold'));
 
 %if the hamming distance lower then the treshold return true
 hammingDistance = sum(abs(VectorFromDB-PersonVector));
 
-if (hammingDistance <= SpatialVocabularyTresh)
+if (hammingDistance <= AllowedTresh)
     bClose = true;
 end
 
