@@ -1,0 +1,37 @@
+function score = Method1ParametersScore()
+addpath ../Method1
+addpath ../Method2
+
+method = 'Method1';
+generateVectorMethod = @Method1GenerateVector;
+if (strcmp(method,'Method2'))
+    generateVectorMethod = @Method2GenerateVector;
+end
+
+basePath = strcat('../..\FaceDBLandmarks\OriginalImages\Georgia Tech\');
+% basePath = '../..\face-release1.0-basic\output\FaceDB\GT Affine Transformed Colored - Trimmed\';
+histogramsPath = strcat('../..\',method, '\Georgia Tech\histograms.mat');
+comparisonPath = strcat('../..\',method, '\Georgia Tech\Comparison\');
+
+allPeopleIds = dir(basePath);
+score = 0;
+for i=1:length(allPeopleIds)
+    if (allPeopleIds(i).isdir && ~strcmp(allPeopleIds(i).name,'.') && ...
+        ~strcmp(allPeopleIds(i).name,'..'))
+        disp(allPeopleIds(i).name)
+        
+        % Inter
+        interDistances = ...
+            CalcInterHammingDistancesHist(basePath,allPeopleIds(i).name,...
+                                     histogramsPath,generateVectorMethod);
+
+        % Intra
+        intraDistances = ...
+            CalcIntraHammingDistancesHist(basePath,allPeopleIds(i).name,...
+                                          histogramsPath,generateVectorMethod);
+        
+        score = score + Method1Score(intraDistances,interDistances);
+    end
+end
+score = score/length(allPeopleIds);
+end

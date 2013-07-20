@@ -1,0 +1,5 @@
+function [ hammingDist ] = CalcHammingDistance( representor1,representor2 )
+
+hammingDist = sum(representor1
+end
+

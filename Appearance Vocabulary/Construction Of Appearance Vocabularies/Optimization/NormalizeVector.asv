@@ -1,0 +1,14 @@
+function normalizedVector = NormalizeVector( vector )
+%NORMALIZEVECTOR Summary of this function goes here
+%   Detailed explanation goes here
+
+vectorMin = min(vector);
+vectorMax = max(vector);
+range = vectorMax - vectorMin;
+
+if 
+normalizedVector = (vector - min(vector))/...
+    (max(vector) - min(vector));
+
+end
+

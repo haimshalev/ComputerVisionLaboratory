@@ -1,0 +1,14 @@
+clear all;
+clc;
+
+histogramsPath = '..\FaceDBHistograms\histograms.mat';
+load(histogramsPath);
+
+[numberOfFeatures, Q, ~] = size(histograms);
+
+for i=1:numberOfFeatures
+    histogram = reshape(histograms(i, :, :), Q, 2);
+    f = figure('Visible','off');
+    plot(histogram(:,1)', histogram(:,2)');
+    saveas(f, strcat('../FaceDBHistograms/images/landmark', num2str(i), '.jpg'));
+end

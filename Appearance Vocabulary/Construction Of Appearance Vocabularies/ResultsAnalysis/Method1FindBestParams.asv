@@ -1,0 +1,8 @@
+clc
+clear all
+close all
+
+addpath ../Optimization
+
+load('../../Optimization/Method1/Method1ParametersScores002.mat');
+Me

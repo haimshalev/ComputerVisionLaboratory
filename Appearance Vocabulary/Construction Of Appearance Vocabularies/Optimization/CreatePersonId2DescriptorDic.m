@@ -1,0 +1,48 @@
+function [ personId2Descriptor,allPeopleIds,n ] = ...
+    CreatePersonId2DescriptorDic( basePath, histogramsPath, imagesPath, generateVectorMethod, z, M, P, sigma )
+
+allPeopleIds = dir(basePath);
+
+n = 0;
+for i=1:length(allPeopleIds)
+    if (allPeopleIds(i).isdir && ~strcmp(allPeopleIds(i).name,'.') && ...
+        ~strcmp(allPeopleIds(i).name,'..'))
+        n = n + 1;
+    end
+end
+
+% build descriptors for each person
+personId2Descriptor = containers.Map;
+
+for i=1:length(allPeopleIds)
+    if (allPeopleIds(i).isdir && ~strcmp(allPeopleIds(i).name,'.') && ...
+        ~strcmp(allPeopleIds(i).name,'..'))
+
+        personId = allPeopleIds(i).name;
+        personDir = strcat(basePath,personId);
+        personImageDir = strcat(imagesPath,personId);
+        personLandmarkFiles = dir(strcat(personDir,'/*.mat'));
+        personImages = dir(strcat(personImageDir,'/*.jpg'));
+
+        currPersonId2Descriptor = containers.Map;
+        for j=1:length(personLandmarkFiles)
+            if (~personLandmarkFiles(j).isdir && ~strcmp(personLandmarkFiles(j).name,'.') && ...
+                ~strcmp(personLandmarkFiles(j).name,'..'))
+
+                personLandmarkFilePath1 = strcat(personDir,'/',personLandmarkFiles(j).name);
+                personImagePath = strcat(personImageDir,'/',personImages(j).name);
+                image = imread(personImagePath);
+
+                personRepresentor1 = ...
+                    generateVectorMethod(histogramsPath, image, personLandmarkFilePath1, z, M, P, sigma);
+                currPersonId2Descriptor(personLandmarkFiles(j).name) = personRepresentor1;
+            end
+        end
+        
+        personId2Descriptor(personId) = currPersonId2Descriptor;
+    end
+end
+
+
+end
+

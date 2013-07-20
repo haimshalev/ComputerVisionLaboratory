@@ -1,0 +1,31 @@
+function [faceSpatialRepresentor] = Method1GenerateVector( histogramsPath,image, landmarksPath, M, P, sigma)
+
+if (nargin < 4)
+    M = 50;
+end
+
+if (nargin < 5)
+    P = [2, 29, 52, 61];
+end
+
+if (nargin < 6)
+    sigma = 0.3;
+end
+
+% histograms is a k x Q x 2 - 
+% first dim is the landmarks
+% second dim is the center of bins,
+% third dim is the number of instances in each bin
+load(histogramsPath);
+
+% landmarks is k x 2
+load(landmarksPath);
+
+% landmarks is k x 2
+% landmarksHistograms is k x Q x 2
+[k,~] = size(currOutput);
+
+faceAppearanceRepresentor = Method1InternalGenerateVector(currOutput, histograms, image, M, P, sigma);
+
+end
+

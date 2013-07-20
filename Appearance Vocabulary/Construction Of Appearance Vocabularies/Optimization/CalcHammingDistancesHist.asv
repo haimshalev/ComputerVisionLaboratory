@@ -1,0 +1,54 @@
+function distances = IDistancesHist(basePath,personId,originIndex,...
+                                     histogramsPath,otherPeopleId)
+
+if (nargin < 5)
+    % all people except the given person
+    allPeopleIds = dir(basePath);
+    
+    j = 1;
+    for i=1:length(allPeopleIds)
+        if (allPeopleIds(i).isdir && ~strcmp(allPeopleIds(i).name,'.') && ...
+            ~strcmp(allPeopleIds(i).name,'..') && ~strcmp(allPeopleIds(i).name,personId))
+            otherPeopleId(j,:) = allPeopleIds(i).name;
+            j = j + 1;
+        end
+    end
+end
+
+% load the landmarks of the person (the first one)
+personDir = strcat(basePath,personId);
+personLandmarkFiles = dir(personDir);
+% skipping the '.' and '..' files
+firstLandmarksFilePath = strcat(personDir,'/',personLandmarkFiles(3).name);
+
+% calculate the person vector
+personRepresentor = ...
+    Method1GenerateVector(histogramsPath,firstLandmarksFilePath,originIndex);
+
+k = 1;
+for i=1:length(otherPeopleId)
+    
+    % get all the current other person's images
+    otherPersonDir = strcat(basePath,otherPeopleId(i,:));
+    otherPersonLandmarkFiles = dir(otherPersonDir);
+    
+    for j=3:length(otherPersonLandmarkFiles)
+        
+        % calculate the current other person vector
+        currLandmarksFilePath = ...
+            strcat(otherPersonDir,'/',otherPersonLandmarkFiles(j).name);
+        currOtherPersonRepresentor = ...
+            Method1GenerateVector(histogramsPath,currLandmarksFilePath,originIndex);
+
+        % calculate hamming distance
+        distances(k) = ...
+            CalcHammingDistance(personRepresentor,currOtherPersonRepresentor);
+        k = k+1;
+    end
+end
+
+% % calc histogram
+% [y,x] = hist(distances');
+% f = figure('Visible','off');
+% plot(y,x);
+end
