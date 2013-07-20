@@ -2,13 +2,13 @@ function [ faceAppearanceRepresentor ] = GenerateAppearanceRepresentation1( imag
 %Generate appearance vector representation using method 1 and return it
 
 %Get the histograms path
-histogramsPath = GetHistogramsPath();
+appeanceTrainDBPath = GetAppearanceVocabularyPath();
 
 % histograms is a k x Q x 2 - 
 % first dim is the landmarks
 % second dim is the center of bins,
 % third dim is the number of instances in each bin
-load(histogramsPath);
+load(appeanceTrainDBPath);
 
 %Set all the representation default prefrences
 z = 5;

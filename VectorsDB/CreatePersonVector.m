@@ -36,7 +36,7 @@ PersonVector = [];
 %vocabularies functions we need to specify which one we use.
 UseAppearanceVocabulary();
 
-%TODO - Generate the Appearance representation
+PersonVector = [PersonVector ; GenerateAppearanceRepresentation(PersonImg , PositionMatrix)];
 
 %% Generate spatial vector representation and Concat it to the other representations
 
