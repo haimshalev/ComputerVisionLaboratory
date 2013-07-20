@@ -14,7 +14,7 @@
   
   <GeneralConfiguration>
     <!-- The representation vocabularies works on images with the same size - This node will specify the first dimenstion size -->
-    <ImageSizeDim1>750<ImageSizeDim1>
+    <ImageSizeDim1>750</ImageSizeDim1>
   </GeneralConfiguration>
   
   <!-- Every subProject configuration-->
