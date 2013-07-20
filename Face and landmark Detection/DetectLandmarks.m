@@ -54,6 +54,7 @@ model = nms_face(model,0.3);
 %stop the timer
 dettime = toc;
 
+model = model(1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Remove all the disabled Landmarks
 
