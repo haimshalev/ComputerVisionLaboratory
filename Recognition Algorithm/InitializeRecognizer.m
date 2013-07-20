@@ -22,9 +22,6 @@ save(GetAffineModelPath(),'AffineModel');
 
 InitializeTrainDB();
 
-%Get the output path of the positions matrix of the train db
-outputPath = FindSubProjectConfiguration('TrainDB','TrainDBFilePath');
-
 %% Spatial Vocabulary init functions
 
 %The spatial vocabulary code have some functions with the same name of the
@@ -33,8 +30,7 @@ outputPath = FindSubProjectConfiguration('TrainDB','TrainDBFilePath');
 UseSpatialVocabulary();
 
 %Train and create Histogram of Spatial bins
-TrainSpatialVocabulary(outputPath,GetHistogramsPath());
-
+TrainSpatialVocabulary();
 
 %% Appearance Vocabulary init functions
 
@@ -43,6 +39,7 @@ TrainSpatialVocabulary(outputPath,GetHistogramsPath());
 %vocabularies functions we need to specify which one we use.
 UseAppearanceVocabulary();
 
-% TODO - add the train function of the appearance vocabulary
+% Train function of the appearance vocabulary
+TrainAppearanceVocabulary();
 
 end
