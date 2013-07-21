@@ -59,12 +59,7 @@ model = model(1);
 %Remove all the disabled Landmarks
 
 if (CustomLandmarks == 1)
-    %Load the Enabled Landmarks matrix
-    EnabledLandmarksMatrix = load(GetEnabledLandmarksPath());
-    EnabledLandmarksMatrix = EnabledLandmarksMatrix.EnabledLandmarks;
-
-    %Remove all the disabled landmarks
-    model(1).xy = model(1).xy(EnabledLandmarksMatrix,:);
+    model = RemoveDisabledLandmarks(model);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

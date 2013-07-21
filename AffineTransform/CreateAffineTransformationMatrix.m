@@ -1,4 +1,4 @@
-function [ H ] = CreateAffineTransformationMatrix(srcImage , AffinedModel )
+function [ H , BeforeAffineModelFull] = CreateAffineTransformationMatrix(srcImage , AffinedModel , InputImageModel)
 %Affine Transformation take source image and a model (landmark positions struct) and
 %create a transformation matrix from the source image landmark model to the
 %affined model
@@ -16,7 +16,16 @@ function [ H ] = CreateAffineTransformationMatrix(srcImage , AffinedModel )
 
 %% Step 1 : Detect the facial landmarks positions in the srcImage 
 
-BeforeAffineModel = DetectLandmarks(srcImage,1);
+if (nargin == 3)
+    BeforeAffineModel = InputImageModel;
+else
+    BeforeAffineModel = DetectLandmarks(srcImage);
+end
+
+BeforeAffineModelFull = BeforeAffineModel;
+
+%Remove all the disabled landmarks
+BeforeAffineModel = RemoveDisabledLandmarks(BeforeAffineModel);
 
 %% Step 2 : Build the positions matrix of the of the Affine transformed model
 

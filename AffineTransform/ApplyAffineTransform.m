@@ -1,16 +1,14 @@
-function [TransformedImage] = ApplyAffineTransform( srcImage , AffinedModel )
+function [TransformedImage , TransformedModel] = ApplyAffineTransform( srcImage , AffinedModel , InputImageModel)
 %TransformImage apply a affine transform on a 3 dimensional Image to match
 %the supplied AffinedModel. Than, save the new image in the variable which name
 %was chosen by the third parameter
 
-%Display the source image
-figure;clf; imagesc(srcImage); axis image; axis off; drawnow;title('Source Image');
-
-%Display the Affined Model landmarks
-showboxes(srcImage,AffinedModel),title('The Image before affine Transformation with the model Landmark');
-
 %Create the affine transformation matrix
-transformationMatrix = CreateAffineTransformationMatrix(srcImage , AffinedModel );
+if (nargin == 3)
+    [transformationMatrix , BeforeAffineModel]= CreateAffineTransformationMatrix(srcImage , AffinedModel , InputImageModel);
+else
+    [transformationMatrix , BeforeAffineModel]= CreateAffineTransformationMatrix(srcImage , AffinedModel);
+end
 
 disp('Creating affined transformed image which match the input model...');
 
@@ -28,12 +26,8 @@ TransformedImage = step(htrans, singlePrecisionImg ,singlePrecisionTMatrix);
 %Convert the output image back to uint8
 TransformedImage = im2uint8(TransformedImage);
 
-%Show the transformed Image
-figure,imshow(TransformedImage),title('The Image after affined Transformation');
-
-
-%Display the Affined Model landmarks
-showboxes(TransformedImage,AffinedModel),title('The Image after affined Transformation with the model Landmark');
+%Create the transformed model - this is proximetly the affined model
+TransformedModel = GetAffinedPositions(transformationMatrix,BeforeAffineModel);
 
 disp('Finshed affine transformation.');
 
