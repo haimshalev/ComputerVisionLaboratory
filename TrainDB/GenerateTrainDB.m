@@ -26,7 +26,7 @@ disp('---- Generate Train DB ----');
         
         TrainDB(i,:,:) = PositionsMatrix;
         PatchesTrainDB(i,:,:) = PatchesMatrix;
-        TrainImages{i} =  rgb2gray(CurrentPerson);
+        TrainImages{i} =  (CurrentPerson);
         
     end
     

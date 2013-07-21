@@ -11,7 +11,7 @@ save(outputPath,'patchesTrainDBout');
 outputPath = FindSubProjectConfiguration('TrainDB','ImagesFilePath');
 save(outputPath,'images');
 
-outputPath = FindSubProjectConfiguration('TrainDB','TrainDBFilePath');
+outputPath = FindSubProjectConfiguration('TrainDB','PositionsTrainDBFilePath');
 save(outputPath,'globalDBout');
 
 end
