@@ -35,10 +35,14 @@
     <InputDBFolder>Resources\train_im</InputDBFolder>
     <!-- The path to the trainDb images structure -->
     <ImagesFilePath>TrainDB/imagesDB.mat</ImagesFilePath>
-    <!-- The Path to the main Train DB file -->
+    <!-- The Path to the Train DB positions file -->
     <PositionsTrainDBFilePath>TrainDB/positionsDB.mat</PositionsTrainDBFilePath>
     <!-- The Path to the patches train DB file -->
     <PatchesTrainDBFilePath>TrainDB/patchesDB.mat</PatchesTrainDBFilePath>
+    <!-- The path to the trainDb affined images structure -->
+    <AffinedImagesFilePath>TrainDB/affinedimagesDB.mat</AffinedImagesFilePath>
+    <!-- The path to the trainDB affined positions structure -->
+    <AffinedPositionsTrainDBFilePath>TrainDB/affinedpositionsDB.mat</AffinedPositionsTrainDBFilePath>
   </TrainDB>
   
   
@@ -64,6 +68,8 @@
       <AppearanceVocabularyTreshold>108</AppearanceVocabularyTreshold>
       <!-- The path to the appearance information struct -->
       <AppearanceDBPath>TrainDB/appearances.mat</AppearanceDBPath>
+      <!-- Use Affine transform before using the appearance vocabulary functions : true/false -->
+      <UseAffineTransform>true</UseAffineTransform>
   </AppearanceVocabulary>
   
   <VectorsDB>

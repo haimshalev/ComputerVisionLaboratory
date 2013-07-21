@@ -1,4 +1,4 @@
-function [ TrainDB , PatchesTrainDB , TrainImages] = GenerateTrainDB(SourceTrainDBPath)
+function [ TrainDB , PatchesTrainDB , TrainImages , AffineTrainDB , TrainAffineImages ] = GenerateTrainDB(SourceTrainDBPath)
     
 disp('---- Generate Train DB ----');
 
@@ -27,6 +27,20 @@ disp('---- Generate Train DB ----');
         TrainDB(i,:,:) = PositionsMatrix;
         PatchesTrainDB(i,:,:) = PatchesMatrix;
         TrainImages{i} =  (CurrentPerson);
+        
+        %% Apply Affine Transform 
+    
+        %Get the Affine transform model
+        AffinedModel = GetAffineModel();
+
+        % Apply affine Transform to the predifined model
+        [AffinedImg , AffineImageModel]= ApplyAffineTransform(CurrentPerson,AffinedModel,ImageModel);
+
+        % Create the landmarks positions matrix
+        AffinePositionsMatrix = GetPositionsMatrix(AffineImageModel);
+        
+        AffineTrainDB(i,:,:) = AffinePositionsMatrix;
+        TrainAffineImages{i} = (AffinedImg);
         
     end
     

@@ -9,23 +9,6 @@ ImageModel = DetectLandmarks(PersonImg);
 % Create the landmarks positions matrix
 PositionsMatrix = GetPositionsMatrix(ImageModel);
 
-%{
-
-TODO : Add this code when Toni's part is done
-
-%Get the Affine transform model
-AffinedModel = GetAffineModel();
-
-% Apply affine Transform to the predifined model
-AffinedImg = ApplyAffineTransform(PersonImg,AffinedModel);
-
-%Detect Landmark in the Affine Transformed image
-AffineImageModel = DetectLandmarks(AffinedImg);
-
-% Create the landmarks positions matrix
-AffinePositionsMatrix = GetPositionsMatrix(AffineImageModel);
-%}
-
 %Initialize the person Vector
 PersonVector = [];
 
@@ -37,7 +20,25 @@ if (strcmp(FindSubProjectConfiguration('AppearanceVocabulary','enabled'),'true')
     %functions in the appearance vocabulary, so each time we use one of the
     %vocabularies functions we need to specify which one we use.
     UseAppearanceVocabulary();  
-    PersonVector = [PersonVector ; GenerateAppearanceRepresentation1(PersonImg , PositionsMatrix)];
+    
+
+    if (strcmp(FindSubProjectConfiguration('AppearanceVocabulary','UseAffineTransform'),'true'))
+    %% Apply Affine Transform 
+    
+        %Get the Affine transform model
+        AffinedModel = GetAffineModel();
+
+        % Apply affine Transform to the predifined model
+        [AffinedImg , AffineImageModel] = ApplyAffineTransform(PersonImg,AffinedModel,ImageModel);
+
+        % Create the landmarks positions matrix
+        AffinePositionsMatrix = GetPositionsMatrix(AffineImageModel);
+        
+        PersonVector = [PersonVector ; GenerateAppearanceRepresentation1(AffinedImg , AffinePositionsMatrix)];
+
+    else
+        PersonVector = [PersonVector ; GenerateAppearanceRepresentation1(PersonImg , PositionsMatrix)];
+    end
 
 end
 
