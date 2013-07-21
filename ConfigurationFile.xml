@@ -45,6 +45,8 @@
   <SpatialVocabulary>
       <!-- The Code folder to include when using the spatial vocabulary -->
       <folder>Spatial Vocabulary</folder>
+      <!-- Enable or disable the use of this vocabulary : true/false-->
+      <enabled>true</enabled>
       <!-- Spatial Representation method - On every change the recognition threshold should change also -->
       <Method>2</Method>
       <!-- The optimal threshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
@@ -56,6 +58,8 @@
   <AppearanceVocabulary>
       <!-- The code folder to include when using the appearance vocabulary -->
       <folder>Appearance Vocabulary</folder>
+      <!-- Enable or disable the use of this vocabulary : true/false-->
+      <enabled>true</enabled>
       <!-- The optimal treshold between the output representation vectors -->
       <AppearanceVocabularyTreshold>108</AppearanceVocabularyTreshold>
       <!-- The path to the appearance information struct -->
@@ -69,7 +73,7 @@
   
   <FaceAndLandmarkDetection>
       <!-- The maximum size of an image (Dimension 1 - Lines) which allowed to participate in the detection algorithm ( used for scaling)  -->
-      <MaxImageSizeDim1>750</MaxImageSizeDim1>
+      <MaxImageSizeDim1>400</MaxImageSizeDim1>
   </FaceAndLandmarkDetection>
 
   <RecognitionAlgorithm>

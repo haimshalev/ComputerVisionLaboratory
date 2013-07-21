@@ -8,9 +8,16 @@ disp('***VectorIsClose - Started***');
 bClose = false;
 
 %initialize the distance treshold
+AllowedTresh = 0;
+
 %We are not allowing more the tresh different
-AllowedTresh = str2double(FindSubProjectConfiguration('SpatialVocabulary','SpatialVocabularyTreshold')); 
-AllowedTresh = AllowedTresh + str2double(FindSubProjectConfiguration('AppearanceVocabulary','AppearanceVocabularyTreshold'));
+if (strcmp(FindSubProjectConfiguration('AppearanceVocabulary','enabled'),'true'))
+    AllowedTresh = AllowedTresh + str2double(FindSubProjectConfiguration('AppearanceVocabulary','AppearanceVocabularyTreshold')); 
+end
+
+if (strcmp(FindSubProjectConfiguration('SpatialVocabulary','enabled'),'true'))
+    AllowedTresh = AllowedTresh + str2double(FindSubProjectConfiguration('SpatialVocabulary','SpatialVocabularyTreshold'));
+end 
 
 %if the hamming distance lower then the treshold return true
 hammingDistance = sum(abs(VectorFromDB-PersonVector));
