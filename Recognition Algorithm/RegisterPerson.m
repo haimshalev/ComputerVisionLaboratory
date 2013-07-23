@@ -1,4 +1,4 @@
-function [ ] = RegisterPerson( PersonImg , PersonName )
+function [ Message ] = RegisterPerson( PersonImg , PersonName )
 %RegisterFace Gets a face image and insert it to the vector DB if there is
 %no similar face in the DB already
 
@@ -11,11 +11,14 @@ PersonVector = CreatePersonVector(PersonImg);
 
 %If secceded Print message
 if (Found == true)
-    fprintf('%s already exist in the DB, registration aborted\n',PersonName);
+    Message = [PersonName ' already exist in the DB, registration aborted'];
 else
     %Insert the person representation to db and saves the DB
     InsertPersonToDB(PersonVector,PersonName);
+    Message = 'Person added to DB';
 end
+
+fprintf('\n %s \n\n',Message);
 
 disp('***RegisterPerson - Ended***');
 
