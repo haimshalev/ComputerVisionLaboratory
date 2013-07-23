@@ -6,6 +6,7 @@ function [  ] = UseSpatialVocabulary(  )
 addpath(genpath(char(FindSubProjectConfiguration('SpatialVocabulary','folder'))));
 
 %Remove the appearance folder from the searching path
+addpath(genpath(char(FindSubProjectConfiguration('AppearanceVocabulary','folder'))));
 rmpath(genpath(char(FindSubProjectConfiguration('AppearanceVocabulary','folder'))));
 
 end
