@@ -37,8 +37,6 @@
     <ImagesFilePath>TrainDB/imagesDB.mat</ImagesFilePath>
     <!-- The Path to the Train DB positions file -->
     <PositionsTrainDBFilePath>TrainDB/positionsDB.mat</PositionsTrainDBFilePath>
-    <!-- The Path to the patches train DB file -->
-    <PatchesTrainDBFilePath>TrainDB/patchesDB.mat</PatchesTrainDBFilePath>
     <!-- The path to the trainDb affined images structure -->
     <AffinedImagesFilePath>TrainDB/affinedimagesDB.mat</AffinedImagesFilePath>
     <!-- The path to the trainDB affined positions structure -->
@@ -50,7 +48,7 @@
       <!-- The Code folder to include when using the spatial vocabulary -->
       <folder>Spatial Vocabulary</folder>
       <!-- Enable or disable the use of this vocabulary : true/false-->
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <!-- Spatial Representation method - On every change the recognition threshold should change also -->
       <Method>2</Method>
       <!-- The optimal threshold between the output representation vectors, For Method 1 - 50 , For Method 2 - 180-->
