@@ -1,0 +1,9 @@
+function [  ] = DisplaySummary( Summary )
+%DISPLAYSUMMARY  - print the summary of the method
+
+for i=1:size(Summary,2)
+    disp(Summary{i,});
+end
+
+end
+
