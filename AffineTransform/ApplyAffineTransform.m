@@ -1,7 +1,6 @@
 function [TransformedImage , TransformedModel] = ApplyAffineTransform( srcImage , AffinedModel , InputImageModel)
 %TransformImage apply a affine transform on a 3 dimensional Image to match
-%the supplied AffinedModel. Than, save the new image in the variable which name
-%was chosen by the third parameter
+%the supplied AffinedModel. Returns the transformed image and model
 
 %Create the affine transformation matrix
 if (nargin == 3)
