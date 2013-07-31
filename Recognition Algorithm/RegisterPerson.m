@@ -7,10 +7,10 @@ disp('***RegisterPerson - Started***');
 PersonVector = CreatePersonVector(PersonImg);
 
 %Try to pull the person from the DB
-[Found , ~ , ~] = PullVectorFromDB(PersonVector);
+[Found , ~ , Person] = PullVectorFromDB(PersonVector);
 
-%If secceded Print message
-if (Found == true)
+%Check is the person is in the DB already    
+if (Found == true && FindPersonWithName(Person,PersonName))
     Message = [PersonName ' already exist in the DB, registration aborted'];
 else
     %Insert the person representation to db and saves the DB
@@ -23,4 +23,3 @@ fprintf('\n %s \n\n',Message);
 disp('***RegisterPerson - Ended***');
 
 end
-
