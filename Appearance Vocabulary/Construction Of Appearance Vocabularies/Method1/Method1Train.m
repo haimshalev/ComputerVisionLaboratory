@@ -10,23 +10,23 @@ function [] = Method1Train( positionsDB, dbImages, histogramsPath, M, P, K, t, s
 % load(dbLandmarksPath);
 
 if (nargin < 4)
-    M = 36;
+    M = 40;
 end
 
 if (nargin < 5)
-    P = [6  32  15  51  52  9  35  59  10 16 18 1 20 13 12 53 3 7 17 36];
+    P = [6  32  15  51  52  9  35  59  10 16 18 1 20 13 12 53 3 7 17 36 4];
 end
 
 if (nargin < 6)
-    K = 50;
+    K = 190;
 end
 
 if (nargin < 7)
-    t = 30;
+    t = 180;
 end
 
 if (nargin < 8)
-    sigma = 6;
+    sigma = 10;
 end
 
 if (nargin < 9)

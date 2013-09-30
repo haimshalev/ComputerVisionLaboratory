@@ -11,10 +11,10 @@ appeanceTrainDBPath = GetAppearanceVocabularyPath();
 load(appeanceTrainDBPath);
 
 %Set all the representation default prefrences
-z = 5;
-M = 36;
-P = [6  32  15  51  52  9  35  59  10 16 18 1 20 13 12 53 3 7 17 36];
-sigma = 6;
+z = 30;
+M = 40;
+P = [6  32  15  51  52  9  35  59  10 16 18 1 20 13 12 53 3 7 17 36 4];
+sigma = 10;
 
 %Create the representation using inner function using all the loaded
 %parameters
