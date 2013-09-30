@@ -1,7 +1,7 @@
 function [] = Method2Train( dbpath, histogramsPath, Q, P)
 
 if (nargin < 3)
-    Q = 40;
+    Q = 30;
 end
 
 if (nargin < 4)
