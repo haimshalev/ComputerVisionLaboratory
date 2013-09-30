@@ -14,7 +14,7 @@
   
   <GeneralConfiguration>
     <!-- The representation vocabularies works on images with the same size - This node will specify the first dimenstion size -->
-    <ImageSizeDim1>750</ImageSizeDim1>
+    <ImageSizeDim1>680</ImageSizeDim1>
   </GeneralConfiguration>
   
   <!-- Every subProject configuration-->
@@ -22,7 +22,7 @@
   
   <AffineTransform>
     <!-- The image from which the affine model built -->
-    <ModelInputImage>Resources/GT Affine Transformed Colored/s01/01.jpg</ModelInputImage>  
+    <ModelInputImage>Resources\GeorgiaTech\GT Affine Transformed Colored\s01\01.jpg</ModelInputImage>  
     <!-- The path to the affine model -->
     <AffineModelPath>AffineTransform/AffineModel.mat</AffineModelPath>
     <!-- The path to the enabled landmarks matrix - A matrix with zeros in the places where the landmarks disabled and ones in the rest-->
@@ -63,7 +63,7 @@
       <!-- Enable or disable the use of this vocabulary : true/false-->
       <enabled>true</enabled>
       <!-- The optimal treshold between the output representation vectors -->
-      <AppearanceVocabularyTreshold>108</AppearanceVocabularyTreshold>
+      <AppearanceVocabularyTreshold>451</AppearanceVocabularyTreshold>
       <!-- The path to the appearance information struct -->
       <AppearanceDBPath>TrainDB/appearances.mat</AppearanceDBPath>
       <!-- Use Affine transform before using the appearance vocabulary functions : true/false -->
@@ -82,9 +82,9 @@
 
   <RecognitionAlgorithm>
     <!-- The path to the Registered test subjects folder  -->
-    <RegisterSubjectsFolder>Resources\Tests\Images 4 Registration</RegisterSubjectsFolder>
+    <RegisterSubjectsFolder>Resources\Tests\GeorgiaTech\Registration</RegisterSubjectsFolder>
     <!-- The path to the Recognize test subjects folder -->
-    <RecognizeSubjectsFolder>Resources\Tests\Images 4 Recognition</RecognizeSubjectsFolder>
+    <RecognizeSubjectsFolder>Resources\Tests\GeorgiaTech\Recognition</RecognizeSubjectsFolder>
 </RecognitionAlgorithm>
   
   
