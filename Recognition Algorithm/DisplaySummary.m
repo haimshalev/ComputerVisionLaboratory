@@ -4,8 +4,8 @@ function [  ] = DisplaySummary( Summary )
 disp('Summary:');
 
 for i=1:size(Summary,2)
-    disp(Summary(1,i));
-    disp(Summary(2,i));
+    disp(Summary{1,i});
+    disp(Summary{2,i});
 end
 
 end
